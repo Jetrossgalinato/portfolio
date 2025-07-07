@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import ThemeWrapper from "./ThemeWrapper";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terminal Portfolio",
@@ -8,13 +9,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased font-mono transition-colors duration-300">
-        {children}
+        <ThemeWrapper>{children}</ThemeWrapper>
       </body>
     </html>
   );
