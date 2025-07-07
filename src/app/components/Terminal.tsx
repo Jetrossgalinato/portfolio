@@ -21,7 +21,7 @@ const Terminal = () => {
         <div className="text-md">
           <p>$ whoami</p>
           <p>Jetross Galinato</p>
-          <p className="mt-2">$ echo "Welcome to my portfolio!"</p>
+          <p className="mt-2">$ echo &quot;Welcome to my portfolio!&quot;</p>
           <p>Welcome to my portfolio!</p>
         </div>
       </div>
