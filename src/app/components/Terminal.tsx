@@ -6,7 +6,7 @@ import { useTheme } from "../context/ThemeContext";
 const Terminal = () => {
   const { theme, toggleTheme } = useTheme();
   const [input, setInput] = useState("");
-  const [history, setHistory] = useState<string[]>([]);
+  const [history, setHistory] = useState<React.ReactNode[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -24,7 +24,12 @@ const Terminal = () => {
         );
       } else if (command === "/about") {
         newHistory.push(
-          "Jetross Galinato - Web Developer, Tech Enthusiast, Terminal Aesthetic Fan."
+          "Jetross Axle Galinato – Full-Stack Web Developer with a strong focus on backend systems",
+          "Based in the Philippines",
+          "3+ years of experience in backend development (APIs, databases, authentication)",
+          "1+ year of experience in full-stack development using modern frameworks",
+          "Skilled in Django, PostgreSQL, REST APIs, React, Next.js, and more",
+          "Tech-stack: Python, Django, PHP, Laravel, Reactjs, Next.js, TypeScript, PostgreSQL, MySQL"
         );
       } else if (command === "/projects") {
         newHistory.push(
@@ -34,8 +39,37 @@ const Terminal = () => {
         );
       } else if (command === "/contact") {
         newHistory.push(
-          "Email: jetross@example.com",
-          "Phone: +63 912 345 6789"
+          <span>
+            Github:{" "}
+            <a
+              href="https://github.com/Jetrossgalinato"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              github.com/Jetrossgalinato
+            </a>
+          </span>,
+          <span>
+            Email:{" "}
+            <a
+              href="mailto:jetrossgalinato@gmail.com"
+              className="hover:underline"
+            >
+              jetrossgalinato@gmail.com
+            </a>
+          </span>,
+          <span>
+            LinkedIn:{" "}
+            <a
+              href="https://www.linkedin.com/in/jetross-galinato-141ba5361/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              linkedin.com/in/jetross-galinato
+            </a>
+          </span>
         );
       } else if (command === "/clear") {
         setHistory([]);
@@ -59,8 +93,8 @@ const Terminal = () => {
   }, [history]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[var(--background)] text-white px-4 transition-all duration-300">
-      <div className="w-full max-w-2xl h-[500px] border border-green-400 rounded p-4 font-mono bg-green-700 dark:bg-black text-white dark:text-green-500 flex flex-col">
+    <div className="min-h-screen flex items-center justify-center bg-[var(--background)] px-4 transition-all duration-300">
+      <div className="w-full max-w-2xl h-[500px] border border-green-400 rounded p-4 font-mono bg-green-900 dark:bg-black text-white dark:text-green-500 flex flex-col">
         <div className="flex justify-between items-center mb-2">
           <span className="text-sm">user@jetross:~</span>
           <button
