@@ -7,6 +7,8 @@ const Terminal = () => {
   const { theme, toggleTheme } = useTheme();
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<React.ReactNode[]>([]);
+  const [commandHistory, setCommandHistory] = useState<string[]>([]);
+  const historyIndex = useRef<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -79,14 +81,47 @@ const Terminal = () => {
         );
       } else if (command === "/clear") {
         setHistory([]);
+        setCommandHistory([]);
         setInput("");
+        historyIndex.current = null;
         return;
       } else {
         newHistory.push(`Command not found: ${command}`);
       }
 
       setHistory(newHistory);
+      setCommandHistory((prev) => [...prev, command]);
       setInput("");
+      historyIndex.current = null;
+    }
+
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const newIndex =
+        historyIndex.current === null
+          ? commandHistory.length - 1
+          : Math.max(historyIndex.current - 1, 0);
+
+      historyIndex.current = newIndex;
+      setInput(commandHistory[newIndex] || "");
+    }
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (historyIndex.current === null) return;
+
+      const newIndex = Math.min(
+        historyIndex.current + 1,
+        commandHistory.length
+      );
+      historyIndex.current = newIndex;
+
+      if (newIndex === commandHistory.length) {
+        setInput("");
+        historyIndex.current = null;
+      } else {
+        setInput(commandHistory[newIndex] || "");
+      }
     }
   };
 
