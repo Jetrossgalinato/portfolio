@@ -28,7 +28,6 @@ const Terminal = () => {
           "Based in the Philippines",
           "3+ years of experience in backend development (APIs, databases, authentication)",
           "1+ year of experience in full-stack development using modern frameworks",
-          "Skilled in Django, PostgreSQL, REST APIs, React, Next.js, and more",
           "Tech-stack: Python, Django, PHP, Laravel, Reactjs, Next.js, TypeScript, PostgreSQL, MySQL"
         );
       } else if (command === "/projects") {
@@ -94,7 +93,7 @@ const Terminal = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--background)] px-4 transition-all duration-300">
-      <div className="w-full max-w-2xl h-[500px] border border-green-400 rounded p-4 font-mono bg-green-900 dark:bg-black text-white dark:text-green-500 flex flex-col">
+      <div className="w-full max-w-2xl h-[500px] border border-green-400 rounded p-4 font-mono bg-green-900 dark:bg-black text-white dark:text-green-400 flex flex-col">
         <div className="flex justify-between items-center mb-2">
           <span className="text-sm">user@jetross:~</span>
           <button
@@ -111,7 +110,7 @@ const Terminal = () => {
           className="flex-1 overflow-y-auto space-y-2 mb-4 pr-1 text-sm"
         >
           <p>$ whoami</p>
-          <p>Jetross Galinato</p>
+          <p>Jetross Axle Galinato</p>
           <p>Welcome to my portfolio!</p>
           {history.map((line, idx) => (
             <p key={idx}>{line}</p>
@@ -119,14 +118,16 @@ const Terminal = () => {
         </div>
 
         <div className="flex items-center border-t border-green-400 pt-2">
-          <span className="mr-2 select-none">$</span>
+          <span className="mr-2 select-none text-sm text-gray-100 dark:text-green-400">
+            user@guest:~$
+          </span>
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="w-full bg-transparent outline-none border-none text-white text-sm dark:text-green-400 placeholder:text-gray-100 dark:placeholder:text-green-500"
-            placeholder="Type /help for list of the commands..."
+            className="w-full bg-transparent outline-none border-none text-white text-sm dark:text-green-400 placeholder:text-gray-200 dark:placeholder:text-green-600"
+            placeholder="Type a command..."
             autoFocus
           />
         </div>
