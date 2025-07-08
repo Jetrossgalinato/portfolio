@@ -171,7 +171,7 @@ const Terminal = () => {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             className="w-full bg-transparent outline-none border-none text-green-700 text-sm dark:text-green-400 placeholder:text-green-500 dark:placeholder:text-green-600"
-            placeholder="Type a command..."
+            placeholder="Type /help for commands..."
             autoFocus
           />
         </div>
