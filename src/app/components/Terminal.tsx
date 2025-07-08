@@ -10,7 +10,41 @@ const Terminal = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && input.trim() !== "") {
-      setHistory([...history, `$ ${input}`]);
+      const command = input.trim();
+      const newHistory = [...history, `$ ${command}`];
+
+      if (command === "/help") {
+        newHistory.push(
+          "Available commands:",
+          "/about     → Show information about me",
+          "/projects  → View list of projects",
+          "/contact   → Get my contact information",
+          "/clear     → Clear the screen"
+        );
+      } else if (command === "/about") {
+        newHistory.push(
+          "Jetross Galinato - Web Developer, Tech Enthusiast, Terminal Aesthetic Fan."
+        );
+      } else if (command === "/projects") {
+        newHistory.push(
+          "1. OJT Attendance System",
+          "2. Palengke Ordering App",
+          "3. Portfolio Terminal Site"
+        );
+      } else if (command === "/contact") {
+        newHistory.push(
+          "📧 Email: jetross@example.com",
+          "📱 Phone: +63 912 345 6789"
+        );
+      } else if (command === "/clear") {
+        setHistory([]);
+        setInput("");
+        return;
+      } else {
+        newHistory.push(`Command not found: ${command}`);
+      }
+
+      setHistory(newHistory);
       setInput("");
     }
   };
@@ -46,7 +80,7 @@ const Terminal = () => {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             className="w-full bg-transparent outline-none border-none placeholder:text-gray-100 dark:placeholder:text-green-400"
-            placeholder="Type a command..."
+            placeholder="Type /help for list of the commands..."
             autoFocus
           />
         </div>
