@@ -29,7 +29,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(224, 224, 224, 0.4); /* Light mode thumb */
+  background-color: rgba(0, 201, 67, 0.4); /* Light mode thumb */
   border-radius: 4px;
 }
 
