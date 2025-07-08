@@ -34,8 +34,8 @@ const Terminal = () => {
         );
       } else if (command === "/contact") {
         newHistory.push(
-          "📧 Email: jetross@example.com",
-          "📱 Phone: +63 912 345 6789"
+          "Email: jetross@example.com",
+          "Phone: +63 912 345 6789"
         );
       } else if (command === "/clear") {
         setHistory([]);
@@ -78,7 +78,6 @@ const Terminal = () => {
         >
           <p>$ whoami</p>
           <p>Jetross Galinato</p>
-          <p>$ echo &quot;Welcome to my portfolio!&quot;</p>
           <p>Welcome to my portfolio!</p>
           {history.map((line, idx) => (
             <p key={idx}>{line}</p>
