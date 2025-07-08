@@ -12,7 +12,14 @@ const Terminal = () => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && input.trim() !== "") {
       const command = input.trim();
-      const newHistory = [...history, `$ ${command}`];
+
+      const newHistory: React.ReactNode[] = [
+        ...history,
+        <span key={Date.now()} className="text-green-400">
+          <span className="mr-2 select-none">user@guest:~$</span>
+          {command}
+        </span>,
+      ];
 
       if (command === "/help") {
         newHistory.push(
@@ -38,7 +45,7 @@ const Terminal = () => {
         );
       } else if (command === "/contact") {
         newHistory.push(
-          <span>
+          <span key="github">
             Github:{" "}
             <a
               href="https://github.com/Jetrossgalinato"
@@ -49,7 +56,7 @@ const Terminal = () => {
               github.com/Jetrossgalinato
             </a>
           </span>,
-          <span>
+          <span key="email">
             Email:{" "}
             <a
               href="mailto:jetrossgalinato@gmail.com"
@@ -58,7 +65,7 @@ const Terminal = () => {
               jetrossgalinato@gmail.com
             </a>
           </span>,
-          <span>
+          <span key="linkedin">
             LinkedIn:{" "}
             <a
               href="https://www.linkedin.com/in/jetross-galinato-141ba5361/"
